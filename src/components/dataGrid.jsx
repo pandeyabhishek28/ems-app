@@ -1,17 +1,13 @@
 import React, { Component } from "react";
 import { Grid, GridColumn as Column } from "@progress/kendo-react-grid";
+import CellWithCustomFormat from "./cellWithCustomFormat";
 import Spinner from "./spinner";
 import "./dataGrid.css";
 
 class DataGrid extends Component {
   state = {
     skip: 0,
-    take: 10,
-    formatOptions: {
-      style: "currency",
-      currency: "EUR",
-      currencyDisplay: "name"
-    }
+    take: 10
   };
 
   pageChange = event => {
@@ -42,8 +38,8 @@ class DataGrid extends Component {
           take={this.state.take}
           total={this.props.gridDataSource.length}
           info={true}
+          pageSizes={[10, 20, 50, 100]}
           pageable={true}
-          // pageSizes={[this.state.take]}
           onPageChange={this.pageChange}
           resizable={true}
         >
@@ -73,22 +69,23 @@ class DataGrid extends Component {
             width={140}
             className="col RightAlignment"
             filter="date"
-            format="{0:D}"
             field="joiningDate"
             title="Date of Joining"
           />
           <Column
             className="col RightAlignment"
             width={100}
-            formatOptions={this.state.formatOptions}
             field="currentCTC"
+            format="currency"
+            cell={CellWithCustomFormat}
             title="Current CTC"
           />
           <Column
             className="col RightAlignment"
             field="previousCTC"
             width={110}
-            filter="numeric"
+            format="currency"
+            cell={CellWithCustomFormat}
             title="Previous CTC"
           />
           <Column
@@ -115,7 +112,13 @@ class DataGrid extends Component {
           />
           <Column width={100} className="col" field="city" title="City" />
           <Column width={100} className="col" field="state" title="State" />
-          <Column width={100} className="col" field="country" title="Country" />
+          <Column
+            width={100}
+            filter="text"
+            className="col"
+            field="country"
+            title="Country"
+          />
           <Column
             width={100}
             className="col"
