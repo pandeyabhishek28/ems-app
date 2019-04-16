@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../logo.svg";
-
+// A NavBar for top section,......
 const NavBar = () => {
   return (
     <div className="navbar bg-info">

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import NavBar from "./navbar";
-
+// Curretly, Header is having a navbar but we can group multiple things here
 class Header extends Component {
   render() {
     return (

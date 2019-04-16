@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+// Importing below CSS files to updated the UI
 import "bootstrap/dist/css/bootstrap.css";
 import "@progress/kendo-theme-default/dist/all.css";
 

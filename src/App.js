@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import "./App.css";
-
+// App is devided into three major parts/module/component
+// Header will be responsible for top section of the page
+// Container will be responsible for holding other components that are required
+// Ribbon will be responsible for the bottom section of the page
 import Header from "./components/header";
 import Container from "./components/container";
 import Ribbon from "./components/ribbon";
@@ -12,6 +15,7 @@ class App extends Component {
     gridData: [0]
   };
 
+  // An async method for loading the grid data
   getGridDataAsync = async () => {
     try {
       this.setState({ status: "loading" });

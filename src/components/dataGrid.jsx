@@ -3,13 +3,14 @@ import { Grid, GridColumn as Column } from "@progress/kendo-react-grid";
 import CellWithCustomFormat from "./cellWithCustomFormat";
 import Spinner from "./spinner";
 import "./dataGrid.css";
-
+// Our main component, Currently it is using the Kendo-react grid to show the data and spinner as a
+// wait indicator.
 class DataGrid extends Component {
   state = {
     skip: 0,
     take: 10
   };
-
+  // This is responsible for handling the page change
   pageChange = event => {
     this.setState({
       skip: event.page.skip,
@@ -22,6 +23,7 @@ class DataGrid extends Component {
   }
 
   render() {
+    // Look for data is loaded, if not then just show the loading indicator
     if (!this.props.isLoaded) {
       return <Spinner />;
     }
@@ -35,11 +37,14 @@ class DataGrid extends Component {
             this.state.take + this.state.skip
           )}
           skip={this.state.skip}
-          take={this.state.take}
+          // take={this.state.take}
           total={this.props.gridDataSource.length}
           info={true}
-          pageSizes={[10, 20, 50, 100]}
+          pageSizes={true}
+          pageSize={this.state.take}
           pageable={true}
+          //filterable={true}
+          sortable={true}
           onPageChange={this.pageChange}
           resizable={true}
         >
@@ -74,7 +79,7 @@ class DataGrid extends Component {
           />
           <Column
             className="col RightAlignment"
-            width={100}
+            width={120}
             field="currentCTC"
             format="currency"
             cell={CellWithCustomFormat}
@@ -83,7 +88,7 @@ class DataGrid extends Component {
           <Column
             className="col RightAlignment"
             field="previousCTC"
-            width={110}
+            width={120}
             format="currency"
             cell={CellWithCustomFormat}
             title="Previous CTC"

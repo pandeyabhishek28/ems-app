@@ -11,58 +11,59 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
+/_..................................................................................................._/
 
-### `npm test`
+Overview:-
+The idea was to divide a page mainly into three component:-
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Header: Responsible for the top section of the page.
+2. Container: Responsible for the middle section or as name state contain everything that requires for the page(so it may have multiple components in it).
+3. Ribbon: Responsible for the bottom section of the page.
+   Each of these can be a group of the component.
 
-### `npm run build`
+Dependencies:
+@progress/kendo-react-grid
+@progress/kendo-data-query
+@progress/kendo-react-inputs
+@progress/kendo-react-intl
+@progress/kendo-react-dropdowns
+@progress/kendo-react-dateinputs
+@progress/kendo-theme-default
+bootstrap
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+/_..................................................................................................._/
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+Experience:-
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+I do have measure the time from starting an initial page request to finished rendering and as a user, I have some observations/opinion regarding the grid. Initially, it was taking some time, but with the help of sync, pagination and wait spinner it starts very quickly. On my system, if I open a new tab and paste the "http: //localhost: 3000/" and click/enter go then it was taking 6 seconds (It will be shorter on your machine) to render everything.
 
-### `npm run eject`
+As per user perspective, it's feel good to interact with a grid that is having the row hovering, Column resizing, frozen column, pagination, scrolling, alternate row color features but there should be a search box with an auto-fill dropdown to make it more user -friendly to look/search for records.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Things, that require to improve the user experience :
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Globalization support(Kendo-Intl).
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+2. The auto-fill search box on top of the grid.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+3. Column filter & Column Chooser
 
-## Learn More
+4. An option to choose a page size.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Challenges encountered and how they were overcome:-
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Pagination was coming vertically:- This was due to CSS files.
 
-### Code Splitting
+2. Unhandled Rejection (SyntaxError) "Unexpected token < in JSON at position 0 : By using Import (import employees from "../testData/employeeData.json";)" :- I was able to read the JSON file but that was taking too much time so I started using the fetch method but the data file was into src folder and fetch method was returning the index.html file in response. To resolve this I have moved the data files into the public folder.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+3. Moving state to higher/up level:- Propagating the props value, have faced undefined error
 
-### Analyzing the Bundle Size
+4. Adding async method:- I have used componentDidMount and props propagation.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+Help from Web:-
 
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+https://programmingwithmosh.com/react/react-tutorial-beginners/
+https://getbootstrap.com/docs/4.3/layout/grid/
+https://www.telerik.com/kendo-react-ui/getting-started/#toc-adding-the-styles
+https://flaviocopes.com/fetch-api/
+https://www.generatedata.com/
+https://medium.com/ag-grid/learn-to-customize-react-grid-in-less-than-10-minutes-2ce6845646bb

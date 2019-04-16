@@ -1,5 +1,5 @@
 import React from "react";
-
+// loading indicator
 const Spinner = () => {
   return (
     <div style={{ height: "40px", width: "100%" }}>
