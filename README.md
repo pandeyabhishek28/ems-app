@@ -11,9 +11,10 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
+
 /_..................................................................................................._/
 
-Overview:-
+### Overview:-
 The idea was to divide a page mainly into three component:-
 
 1. Header: Responsible for the top section of the page.
@@ -21,7 +22,17 @@ The idea was to divide a page mainly into three component:-
 3. Ribbon: Responsible for the bottom section of the page.
    Each of these can be a group of the component.
 
-Dependencies:
+Other components:
+1. DataGrid: To show the data in a grid format
+2. NavBar: For the top section of the page currently there is no navigation 
+3. Spinner: Loading status indication 
+4. Cellwithcustomformat: For formatting the grid cells
+   
+For now, they are placed as,
+1. Header:{NavBar} 
+2. Container: {DataGrid} and DataGrid: {Spinner, Cellwithcustomformat}
+
+### Dependencies:
 @progress/kendo-react-grid
 @progress/kendo-data-query
 @progress/kendo-react-inputs
@@ -33,7 +44,7 @@ bootstrap
 
 /_..................................................................................................._/
 
-Experience:-
+### Experience:-
 
 I do have measure the time from starting an initial page request to finished rendering and as a user, I have some observations/opinion regarding the grid. Initially, it was taking some time, but with the help of sync, pagination and wait spinner it starts very quickly. On my system, if I open a new tab and paste the "http: //localhost: 3000/" and click/enter go then it was taking 6 seconds (It will be shorter on your machine) to render everything.
 
